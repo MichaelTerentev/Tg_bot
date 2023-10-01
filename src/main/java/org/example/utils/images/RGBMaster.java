@@ -38,4 +38,13 @@ public class RGBMaster {
 
         return (avg << 16) | (avg << 8) | avg;
     }
+
+    //этот фильтр вы тоже можете протестировать
+    public static int brightened(int argb, int brightness) {
+        int red = Math.max(0, Math.min(((argb >> 16) & 0xFF) + brightness, 255)),
+            green = Math.max(0, Math.min(((argb >> 8) & 0xFF) + brightness, 255)),
+            blue = Math.max(0, Math.min((argb & 0xFF) + brightness, 255));
+
+        return (red << 16) | (green << 8) | blue;
+    }
 }
